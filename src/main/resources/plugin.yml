@@ -1,0 +1,10 @@
+name: RegrowthJukebox
+version: ${project.version}
+main: org.lushplugins.regrowthjukebox.RegrowthJukebox
+api-version: 1.16
+folia-supported: true
+softdepend:
+  - PlaceholderAPI
+commands:
+  regrowthjukebox:
+    usage: /regrowthjukebox
