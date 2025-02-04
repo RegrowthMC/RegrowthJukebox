@@ -35,7 +35,7 @@ public class RegrowthJukebox extends JavaPlugin {
         jukeboxManager.registerJukebox(new Jukebox(
             "qawEdR",
             new Location(Bukkit.getWorld("world"), -7, 69, -51),
-            songManager.loadPlaylist("winter")));
+            songManager.getAllSongs())); // songManager#loadPlaylist for a playlist
 
         jukeboxManager.registerJukebox(new Jukebox(
             "AwrCbD",
