@@ -24,11 +24,13 @@ public class ConfigManager {
 
         for (Map<?, ?> jukeboxMap : config.getMapList("jukeboxes")) {
             String id = (String) jukeboxMap.get("id");
+
+            Map<?, ?> locationMap = (Map<?, ?>) jukeboxMap.get("location");
             Location location = new Location(
-                Bukkit.getWorld((String) jukeboxMap.get("world")),
-                (int) jukeboxMap.get("x"),
-                (int) jukeboxMap.get("y"),
-                (int) jukeboxMap.get("z")
+                Bukkit.getWorld((String) locationMap.get("world")),
+                (int) locationMap.get("x"),
+                (int) locationMap.get("y"),
+                (int) locationMap.get("z")
             );
             String playlist = (String) jukeboxMap.get("playlist");
 
