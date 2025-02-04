@@ -1,0 +1,15 @@
+jukeboxes:
+  - id: qawEdR
+    location:
+      world: world
+      x: 0
+      y: 63
+      z: 0
+    playlist: default
+  - id: AwrCbD
+    location:
+      world: world
+      x: 100
+      y: 80
+      z: 100
+    playlist: winter

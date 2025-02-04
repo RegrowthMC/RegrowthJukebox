@@ -1,24 +1,21 @@
 package org.lushplugins.regrowthjukebox;
 
-import org.bukkit.Bukkit;
-import org.bukkit.Location;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
-import org.lushplugins.nbsminecraft.NBSAPI;
+import org.lushplugins.regrowthjukebox.command.ReloadCommand;
 import org.lushplugins.regrowthjukebox.command.TestCommand;
+import org.lushplugins.regrowthjukebox.config.ConfigManager;
 import org.lushplugins.regrowthjukebox.config.SongManager;
 import org.lushplugins.regrowthjukebox.hook.PlaceholderAPIHook;
-import org.lushplugins.regrowthjukebox.jukebox.Jukebox;
 import org.lushplugins.regrowthjukebox.jukebox.JukeboxManager;
 import org.lushplugins.regrowthjukebox.listener.PlayerListener;
-
-import java.util.List;
 
 public class RegrowthJukebox extends JavaPlugin {
     private static RegrowthJukebox plugin;
 
     private SongManager songManager;
     private JukeboxManager jukeboxManager;
+    private ConfigManager configManager;
 
     @Override
     public void onLoad() {
@@ -31,19 +28,7 @@ public class RegrowthJukebox extends JavaPlugin {
         songManager.reloadSongs();
 
         jukeboxManager = new JukeboxManager();
-        // Temporary hardcoded jukebox
-        jukeboxManager.registerJukebox(new Jukebox(
-            "qawEdR",
-            new Location(Bukkit.getWorld("world"), -7, 69, -51),
-            songManager.getAllSongs())); // songManager#loadPlaylist for a playlist
-
-        jukeboxManager.registerJukebox(new Jukebox(
-            "AwrCbD",
-            new Location(Bukkit.getWorld("world"), -19, 70, 14),
-            List.of(
-                NBSAPI.INSTANCE.readSongInputStream(getResource("letitbe/let-it-be.nbs")),
-                NBSAPI.INSTANCE.readSongInputStream(getResource("letitbe/let-it-be-harp.nbs"))
-            )));
+        configManager = new ConfigManager();
 
         PluginManager pluginManager = getServer().getPluginManager();
         if (pluginManager.getPlugin("PlaceholderAPI") != null) {
@@ -53,6 +38,7 @@ public class RegrowthJukebox extends JavaPlugin {
         pluginManager.registerEvents(new PlayerListener(), this);
 
         getCommand("regrowthjukebox").setExecutor(new TestCommand());
+        getCommand("regrowthjukeboxreload").setExecutor(new ReloadCommand());
     }
 
     @Override
@@ -72,6 +58,10 @@ public class RegrowthJukebox extends JavaPlugin {
 
     public JukeboxManager getJukeboxManager() {
         return jukeboxManager;
+    }
+
+    public ConfigManager getConfigManager() {
+        return configManager;
     }
 
     public static RegrowthJukebox getInstance() {

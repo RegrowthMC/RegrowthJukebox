@@ -8,3 +8,5 @@ softdepend:
 commands:
   regrowthjukebox:
     usage: /regrowthjukebox
+  regrowthjukeboxreload:
+    usage: /regrowthjukeboxreload

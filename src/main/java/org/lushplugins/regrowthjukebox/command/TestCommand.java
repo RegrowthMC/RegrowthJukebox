@@ -22,6 +22,11 @@ public class TestCommand implements CommandExecutor {
 
     @Override
     public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
+        if (!sender.hasPermission("regrowthjukebox.test")) {
+            sender.sendMessage("You do not have permission for this command");
+            return true;
+        }
+
         Map<String, Song> songs = NBSAPI.INSTANCE.readSongsInDirectory(new File(RegrowthJukebox.getInstance().getDataFolder(), "songs"));
 
         SongQueue queue = new SongQueue();
