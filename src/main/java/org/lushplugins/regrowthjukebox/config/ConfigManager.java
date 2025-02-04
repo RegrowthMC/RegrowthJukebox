@@ -13,6 +13,7 @@ import java.util.Map;
 public class ConfigManager {
 
     public ConfigManager() {
+        RegrowthJukebox.getInstance().saveDefaultConfig();
         reloadConfig();
     }
 
