@@ -12,7 +12,12 @@ public class SongManager {
     private Map<String, Song> songs;
 
     public void reloadSongs() {
-        this.songs = NBSAPI.INSTANCE.readSongsInDirectory(new File(RegrowthJukebox.getInstance().getDataFolder(), "songs"));
+        File songsDir = new File(RegrowthJukebox.getInstance().getDataFolder(), "songs");
+        if (!songsDir.exists()) {
+            return;
+        }
+
+        this.songs = NBSAPI.INSTANCE.readSongsInDirectory(songsDir);
     }
 
     public Collection<Song> getAllSongs() {
