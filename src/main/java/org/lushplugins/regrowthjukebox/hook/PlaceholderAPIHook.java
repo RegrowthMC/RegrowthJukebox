@@ -50,7 +50,7 @@ public class PlaceholderAPIHook {
                             return "";
                         } else {
                             String author = song.getAuthor();
-                            return !author.isEmpty() ? author : "Unknown";
+                            return author != null && !author.isEmpty() ? author : "Unknown";
                         }
                     }
                 }
