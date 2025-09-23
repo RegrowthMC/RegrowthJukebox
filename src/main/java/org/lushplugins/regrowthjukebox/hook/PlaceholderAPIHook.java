@@ -32,7 +32,7 @@ public class PlaceholderAPIHook {
                         if (song == null) {
                             return "";
                         } else {
-                            return song.getMetadata().getTitle();
+                            return song.getTitle();
                         }
                     }
                     case "song_artist" -> {
@@ -40,7 +40,7 @@ public class PlaceholderAPIHook {
                         if (song == null) {
                             return "";
                         } else {
-                            String originalAuthor = song.getMetadata().getOriginalAuthor();
+                            String originalAuthor = song.getOriginalAuthor();
                             return !originalAuthor.isEmpty() ? originalAuthor : "Unknown";
                         }
                     }
@@ -49,7 +49,7 @@ public class PlaceholderAPIHook {
                         if (song == null) {
                             return "";
                         } else {
-                            String author = song.getMetadata().getAuthor();
+                            String author = song.getAuthor();
                             return !author.isEmpty() ? author : "Unknown";
                         }
                     }

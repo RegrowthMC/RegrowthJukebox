@@ -23,7 +23,7 @@ public class Jukebox {
 
     public Jukebox(String id, Location location, Collection<Song> songs) {
         this.id = id;
-        this.songPlayer = new BukkitSongPlayer.Builder()
+        this.songPlayer = BukkitSongPlayer.builder()
             .soundEmitter(new StaticSoundEmitter(new SoundLocation(
                 location.getWorld().getName(),
                 location.getBlockX(),
