@@ -12,9 +12,6 @@ jobs:
   create_release:
     runs-on: ubuntu-latest
 
-    env:
-      MODRINTH_TOKEN: ${{ secrets.MODRINTH_TOKEN }}
-
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
@@ -37,12 +34,13 @@ jobs:
           echo "VERSION=$VERSION" >> $GITHUB_ENV
 
       - name: Check for existing tag
+        id: check_tag
         uses: action-pack/tag-exists@v1
         with: 
           tag: ${{ env.FULL_VERSION }}
 
       - name: Build with Gradle
-        if: ${{ steps.check.outputs.exists }} == 'false'
+        if: ${{ steps.check_tag.outputs.exists }} == 'false'
         run: |
           chmod +x ./gradlew
           ./gradlew shadowJar
