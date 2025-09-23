@@ -26,7 +26,7 @@ dependencies {
     compileOnly("me.clip:placeholderapi:2.11.6")
 
     // Libraries
-    api("org.lushplugins.nbsminecraft:NBSMinecraft-bukkit:1.0.0-alpha28")
+    api("org.lushplugins.nbsminecraft:NBSMinecraft-bukkit:1.0.0-alpha42")
 }
 
 java {
