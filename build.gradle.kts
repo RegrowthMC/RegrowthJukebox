@@ -14,6 +14,7 @@ repositories {
     maven("https://oss.sonatype.org/content/groups/public/")
     maven("https://hub.spigotmc.org/nexus/content/repositories/snapshots/") // Spigot
     maven("https://repo.lushplugins.org/snapshots/") // NBSMinecraft
+    maven("https://maven.lenni0451.net/snapshots/") // NBSMinecraft
     maven("https://repo.helpch.at/releases/") // PlaceholderAPI
     maven("https://jitpack.io") // NBS4j (NBSMinecraft)
 }
