@@ -40,14 +40,14 @@ jobs:
           tag: v${{ env.FULL_VERSION }}
 
       - name: Build with Gradle
-        if: ${{ steps.check_tag.outputs.exists }} == 'false'
+        if: ${{ steps.check_tag.outputs.exists == 'false' }}
         run: |
           echo ${{ steps.check_tag.outputs.exists }}
           chmod +x ./gradlew
           ./gradlew shadowJar
 
       - name: Post GitHub Release
-        if: ${{ steps.check.outputs.exists }} == 'false'
+        if: ${{ steps.check.outputs.exists == 'false' }}
         uses: svenstaro/upload-release-action@v2
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
