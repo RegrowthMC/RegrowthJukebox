@@ -37,7 +37,7 @@ jobs:
         id: check_tag
         uses: action-pack/tag-exists@v1
         with: 
-          tag: ${{ env.FULL_VERSION }}
+          tag: v${{ env.FULL_VERSION }}
 
       - name: Build with Gradle
         if: ${{ steps.check_tag.outputs.exists }} == 'false'
