@@ -36,12 +36,19 @@ jobs:
           VERSION=$(grep -oP 'version = "\K[0-9]+\.[0-9]+\.[0-9]+' build.gradle.kts)
           echo "VERSION=$VERSION" >> $GITHUB_ENV
 
+      - name: Check for existing tag
+        uses: action-pack/tag-exists@v1
+        with: 
+          tag: ${{ env.FULL_VERSION }}
+
       - name: Build with Gradle
+        if: ${{ steps.check.outputs.exists }} == 'false'
         run: |
           chmod +x ./gradlew
           ./gradlew shadowJar
 
       - name: Post GitHub Release
+        if: ${{ steps.check.outputs.exists }} == 'false'
         uses: svenstaro/upload-release-action@v2
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
