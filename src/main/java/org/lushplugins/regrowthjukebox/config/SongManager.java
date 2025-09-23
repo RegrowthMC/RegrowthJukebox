@@ -1,6 +1,6 @@
 package org.lushplugins.regrowthjukebox.config;
 
-import cz.koca2000.nbs4j.Song;
+import net.raphimc.noteblocklib.model.Song;
 import org.lushplugins.nbsminecraft.NBSAPI;
 import org.lushplugins.regrowthjukebox.RegrowthJukebox;
 

@@ -1,6 +1,6 @@
 package org.lushplugins.regrowthjukebox.command;
 
-import cz.koca2000.nbs4j.Song;
+import net.raphimc.noteblocklib.model.Song;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;

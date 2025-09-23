@@ -1,6 +1,6 @@
 package org.lushplugins.regrowthjukebox.jukebox;
 
-import cz.koca2000.nbs4j.Song;
+import net.raphimc.noteblocklib.model.Song;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
 import org.lushplugins.nbsminecraft.platform.bukkit.player.BukkitSongPlayer;

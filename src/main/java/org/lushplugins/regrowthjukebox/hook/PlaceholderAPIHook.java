@@ -1,6 +1,6 @@
 package org.lushplugins.regrowthjukebox.hook;
 
-import cz.koca2000.nbs4j.Song;
+import net.raphimc.noteblocklib.model.Song;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
 import org.lushplugins.regrowthjukebox.RegrowthJukebox;
