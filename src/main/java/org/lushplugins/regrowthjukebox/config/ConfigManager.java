@@ -3,6 +3,7 @@ package org.lushplugins.regrowthjukebox.config;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.configuration.file.FileConfiguration;
+import org.lushplugins.nbsminecraft.player.emitter.GlobalSoundEmitter;
 import org.lushplugins.nbsminecraft.song.SongQueue;
 import org.lushplugins.regrowthjukebox.RegrowthJukebox;
 import org.lushplugins.regrowthjukebox.jukebox.Jukebox;
@@ -41,11 +42,19 @@ public class ConfigManager {
                 songQueue.clearQueue();
                 songQueue.queueSongs(plugin.getSongManager().loadPlaylist(playlist));
             } else {
-                jukeboxManager.registerJukebox(new Jukebox(
-                    id,
-                    location,
-                    plugin.getSongManager().loadPlaylist(playlist)
-                ));
+                if (jukeboxMap.containsKey("global") && (boolean) jukeboxMap.get("global")) {
+                    jukeboxManager.registerJukebox(new Jukebox(
+                        id,
+                        plugin.getSongManager().loadPlaylist(playlist),
+                        new GlobalSoundEmitter()
+                    ));
+                } else {
+                    jukeboxManager.registerJukebox(new Jukebox(
+                        id,
+                        location,
+                        plugin.getSongManager().loadPlaylist(playlist)
+                    ));
+                }
             }
         }
     }

@@ -5,6 +5,7 @@ import org.bukkit.Location;
 import org.bukkit.entity.Player;
 import org.lushplugins.nbsminecraft.platform.bukkit.player.BukkitSongPlayer;
 import org.lushplugins.nbsminecraft.player.SongPlayer;
+import org.lushplugins.nbsminecraft.player.emitter.SoundEmitter;
 import org.lushplugins.nbsminecraft.player.emitter.StaticSoundEmitter;
 import org.lushplugins.nbsminecraft.utils.AudioListener;
 import org.lushplugins.nbsminecraft.utils.SoundLocation;
@@ -17,24 +18,28 @@ public class Jukebox {
     private final String id;
     private final SongPlayer songPlayer;
 
-    public Jukebox(String id, Location location) {
-        this(id, location, RegrowthJukebox.getInstance().getSongManager().getAllSongs());
-    }
-
-    public Jukebox(String id, Location location, Collection<Song> songs) {
+    public Jukebox(String id, Collection<Song> songs, SoundEmitter emitter) {
         this.id = id;
         this.songPlayer = BukkitSongPlayer.builder()
-            .soundEmitter(new StaticSoundEmitter(new SoundLocation(
-                location.getWorld().getName(),
-                location.getBlockX(),
-                location.getBlockY(),
-                location.getBlockZ())))
+            .soundEmitter(emitter)
             .build();
 
         songs.forEach(songPlayer::queueSong);
         songPlayer.loopQueue(true);
         songPlayer.shuffleQueue();
         songPlayer.play();
+    }
+
+    public Jukebox(String id, Location location, Collection<Song> songs) {
+        this(id, songs, new StaticSoundEmitter(new SoundLocation(
+            location.getWorld().getName(),
+            location.getBlockX(),
+            location.getBlockY(),
+            location.getBlockZ())));
+    }
+
+    public Jukebox(String id, Location location) {
+        this(id, location, RegrowthJukebox.getInstance().getSongManager().getAllSongs());
     }
 
     public String getId() {
