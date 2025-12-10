@@ -21,7 +21,7 @@ repositories {
 
 dependencies {
     // Dependencies
-    compileOnly("org.spigotmc:spigot-api:1.21.8-R0.1-SNAPSHOT")
+    compileOnly("org.spigotmc:spigot-api:1.21.11-R0.1-SNAPSHOT")
 
     // Soft Dependencies
     compileOnly("me.clip:placeholderapi:2.11.6")
