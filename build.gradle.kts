@@ -24,7 +24,7 @@ dependencies {
     compileOnly("org.spigotmc:spigot-api:26.1.2-R0.1-SNAPSHOT")
 
     // Soft Dependencies
-    compileOnly("me.clip:placeholderapi:2.12.0")
+    compileOnly("me.clip:placeholderapi:2.12.2")
 
     // Libraries
     api("org.lushplugins.nbsminecraft:NBSMinecraft-bukkit:1.0.0-alpha42")
